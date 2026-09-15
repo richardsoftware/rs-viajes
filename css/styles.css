@@ -1,0 +1,1058 @@
+/* ============================================================
+   RS VIAJES & EXPERIENCIAS
+   STYLE.CSS
+   ============================================================ */
+
+:root{
+  --navy:#0B1F3A;
+  --navy-deep:#071526;
+  --navy-soft:#14304F;
+
+  --gold:#C9A227;
+  --gold-light:#E7C45C;
+
+  --paper:#FBF8F1;
+  --paper-dim:#F2ECDE;
+
+  --ink:#1B2430;
+  --ink-soft:#55606E;
+
+  --line:#D9CFB8;
+  --line-dark:rgba(255,255,255,.22);
+
+  --white:#ffffff;
+  --wa:#22A559;
+
+  --radius:4px;
+  --maxw:1180px;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Work Sans",sans-serif;
+  line-height:1.6;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* ============================================================
+   GENERAL
+   ============================================================ */
+
+.wrap{
+  width:min(
+    calc(100% - 40px),
+    var(--maxw)
+  );
+
+  margin:0 auto;
+}
+
+.eyebrow{
+  display:inline-block;
+
+  color:var(--gold);
+
+  font-size:12px;
+  font-weight:700;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.section-head{
+  margin-bottom:36px;
+}
+
+.section-head h2{
+  margin:8px 0 8px;
+
+  font-family:"Fraunces",serif;
+
+  font-size:clamp(
+    32px,
+    4vw,
+    48px
+  );
+
+  line-height:1.1;
+}
+
+.section-head p{
+  margin:0;
+
+  color:var(--ink-soft);
+}
+
+
+/* ============================================================
+   BOTONES
+   ============================================================ */
+
+.btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-height:46px;
+
+  padding:0 20px;
+
+  border:1px solid transparent;
+  border-radius:var(--radius);
+
+  font-size:14px;
+  font-weight:700;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-wa{
+  background:var(--wa);
+  color:var(--white);
+}
+
+.btn-wa:hover{
+  background:#198c4a;
+}
+
+.btn-outline{
+  border-color:var(--navy);
+  background:transparent;
+  color:var(--navy);
+}
+
+.btn-outline:hover{
+  background:var(--navy);
+  color:var(--white);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  background:rgba(
+    251,
+    248,
+    241,
+    .96
+  );
+
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(10px);
+}
+
+.header-inner{
+  min-height:76px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:20px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand-mark{
+  width:44px;
+  height:44px;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--navy);
+  color:var(--gold-light);
+
+  font-family:"Fraunces",serif;
+  font-weight:700;
+
+  border-radius:4px;
+}
+
+.brand-text{
+  display:flex;
+  flex-direction:column;
+
+  line-height:1.1;
+}
+
+.brand-text strong{
+  font-family:"Fraunces",serif;
+  font-size:20px;
+}
+
+.brand-text span{
+  color:var(--ink-soft);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.header-wa{
+  min-height:40px;
+}
+
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero{
+  padding:70px 0 80px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(201,162,39,.14),
+      transparent 30%
+    ),
+    var(--navy);
+}
+
+.hero-ticket{
+  min-height:460px;
+
+  display:grid;
+  grid-template-columns:1fr 260px;
+
+  align-items:center;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.01)
+    );
+
+  border:1px solid var(--line-dark);
+  border-radius:12px;
+}
+
+.hero-copy{
+  padding:60px;
+}
+
+.hero-copy .eyebrow{
+  color:var(--gold-light);
+}
+
+.hero-copy h1{
+  margin:18px 0;
+
+  color:var(--white);
+
+  font-family:"Fraunces",serif;
+
+  font-size:clamp(
+    46px,
+    7vw,
+    82px
+  );
+
+  line-height:.98;
+}
+
+.hero-copy h1 span{
+  display:block;
+  color:var(--gold-light);
+}
+
+.hero-copy p{
+  max-width:650px;
+
+  margin:0 0 30px;
+
+  color:rgba(255,255,255,.78);
+
+  font-size:18px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.hero-actions .btn-outline{
+  border-color:var(--gold-light);
+  color:var(--gold-light);
+}
+
+.hero-actions .btn-outline:hover{
+  background:var(--gold-light);
+  color:var(--navy);
+}
+
+.hero-stamp{
+  min-height:100%;
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  border-left:1px dashed var(--line-dark);
+
+  color:var(--gold-light);
+
+  text-align:center;
+
+  letter-spacing:.18em;
+}
+
+.hero-stamp strong{
+  font-family:"Fraunces",serif;
+  font-size:80px;
+  line-height:1;
+}
+
+
+/* ============================================================
+   CARRUSEL DE FLYERS
+   ============================================================ */
+
+.flyers{
+  padding:80px 0;
+  background:var(--paper);
+}
+
+.flyer-carousel{
+  position:relative;
+
+  max-width:900px;
+
+  margin:0 auto;
+
+  display:flex;
+  align-items:center;
+
+  gap:16px;
+}
+
+.flyer-window{
+  width:100%;
+
+  overflow:hidden;
+
+  border-radius:18px;
+
+  border:1px solid var(--line);
+
+  background:var(--white);
+
+  box-shadow:
+    0 20px 45px -25px
+    rgba(27,36,48,.45);
+}
+
+.flyer-track{
+  display:flex;
+
+  transition:
+    transform .45s ease;
+}
+
+.flyer-slide{
+  min-width:100%;
+
+  position:relative;
+
+  background:var(--white);
+}
+
+.flyer-slide img{
+  width:100%;
+  height:auto;
+
+  max-height:650px;
+
+  object-fit:contain;
+
+  margin:auto;
+}
+
+.flyer-overlay{
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  padding:35px 24px 22px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(7,21,38,.88)
+    );
+
+  display:flex;
+  justify-content:flex-end;
+}
+
+.flyer-overlay .btn{
+  font-size:14px;
+}
+
+.flyer-btn{
+  width:44px;
+  height:44px;
+
+  flex-shrink:0;
+
+  border-radius:50%;
+
+  border:1px solid var(--line);
+
+  background:var(--white);
+
+  color:var(--navy);
+
+  font-size:25px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  box-shadow:
+    0 8px 20px
+    rgba(27,36,48,.15);
+
+  transition:
+    all .2s ease;
+}
+
+.flyer-btn:hover{
+  background:var(--navy);
+  color:var(--paper);
+
+  transform:scale(1.05);
+}
+
+.flyer-dots{
+  display:flex;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:20px;
+}
+
+.flyer-dot{
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+
+  border:0;
+  padding:0;
+
+  background:var(--line);
+
+  cursor:pointer;
+
+  transition:
+    all .2s ease;
+}
+
+.flyer-dot.active{
+  background:var(--gold);
+
+  transform:scale(1.25);
+}
+
+
+/* ============================================================
+   CATÁLOGO
+   ============================================================ */
+
+.catalogo{
+  padding:90px 0;
+
+  background:var(--paper-dim);
+}
+
+.filters{
+  display:grid;
+
+  grid-template-columns:
+    minmax(200px,1fr)
+    minmax(180px,.7fr)
+    minmax(180px,.7fr)
+    auto;
+
+  gap:14px;
+
+  align-items:end;
+
+  margin-bottom:26px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+
+  gap:7px;
+}
+
+.field label{
+  font-size:12px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:.08em;
+}
+
+.field input,
+.field select{
+  width:100%;
+
+  min-height:46px;
+
+  padding:0 13px;
+
+  border:1px solid var(--line);
+
+  border-radius:var(--radius);
+
+  background:var(--white);
+
+  color:var(--ink);
+
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:var(--gold);
+}
+
+.results-info{
+  margin-bottom:20px;
+
+  color:var(--ink-soft);
+
+  font-size:14px;
+}
+
+.trip-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:20px;
+}
+
+.trip-card{
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+
+  background:var(--white);
+
+  border:1px solid var(--line);
+
+  border-radius:10px;
+
+  box-shadow:
+    0 12px 30px
+    rgba(27,36,48,.06);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.trip-card:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 18px 40px
+    rgba(27,36,48,.12);
+}
+
+.trip-top{
+  min-height:130px;
+
+  padding:22px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  color:var(--white);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--trip-a),
+      var(--trip-b)
+    );
+}
+
+.trip-destination{
+  font-size:12px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.12em;
+
+  opacity:.8;
+}
+
+.trip-title{
+  margin:5px 0 0;
+
+  font-family:"Fraunces",serif;
+
+  font-size:25px;
+
+  line-height:1.1;
+}
+
+.trip-body{
+  padding:22px;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:13px;
+
+  flex:1;
+}
+
+.trip-meta{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:8px;
+}
+
+.trip-badge{
+  display:inline-flex;
+
+  align-items:center;
+
+  padding:5px 8px;
+
+  border:1px solid var(--line);
+
+  border-radius:99px;
+
+  background:var(--paper);
+
+  font-size:11px;
+  font-weight:600;
+}
+
+.trip-hotel{
+  font-weight:700;
+}
+
+.trip-price{
+  margin-top:auto;
+
+  font-family:"Fraunces",serif;
+
+  font-size:30px;
+
+  color:var(--navy);
+}
+
+.trip-price-note{
+  color:var(--ink-soft);
+
+  font-size:12px;
+}
+
+.trip-incluye{
+  color:var(--ink-soft);
+
+  font-size:13px;
+}
+
+.trip-date{
+  font-size:13px;
+
+  font-weight:700;
+}
+
+.trip-card .btn{
+  width:100%;
+}
+
+
+/* ============================================================
+   EMPTY
+   ============================================================ */
+
+.empty{
+  padding:60px 20px;
+
+  text-align:center;
+
+  border:1px dashed var(--line);
+}
+
+.empty h3{
+  margin:0 0 6px;
+
+  font-family:"Fraunces",serif;
+}
+
+.empty p{
+  margin:0;
+
+  color:var(--ink-soft);
+}
+
+
+/* ============================================================
+   PAGINACIÓN
+   ============================================================ */
+
+.pager{
+  display:flex;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:35px;
+}
+
+.pager button{
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--line);
+
+  border-radius:var(--radius);
+
+  background:var(--white);
+
+  color:var(--navy);
+}
+
+.pager button.active{
+  background:var(--navy);
+  color:var(--white);
+}
+
+.pager button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+
+/* ============================================================
+   TRUST
+   ============================================================ */
+
+.trust{
+  padding:35px 0;
+
+  background:var(--navy);
+
+  color:var(--white);
+}
+
+.trust-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:20px;
+}
+
+.trust-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  padding:8px 0;
+}
+
+.trust-item strong{
+  color:var(--gold-light);
+
+  font-family:"Fraunces",serif;
+
+  font-size:20px;
+}
+
+.trust-item span{
+  font-size:13px;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer{
+  padding:55px 0 25px;
+
+  background:var(--navy-deep);
+
+  color:var(--white);
+}
+
+.footer-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:40px;
+
+  padding-bottom:40px;
+}
+
+.footer-brand .brand-text span{
+  color:rgba(255,255,255,.55);
+}
+
+.footer-grid p{
+  color:rgba(255,255,255,.65);
+}
+
+.footer-contact{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+
+  align-items:flex-start;
+}
+
+.footer-contact strong{
+  color:var(--gold-light);
+
+  margin-bottom:5px;
+}
+
+.footer-contact a{
+  color:rgba(255,255,255,.78);
+}
+
+.footer-contact a:hover{
+  color:var(--gold-light);
+}
+
+.footer-bottom{
+  padding-top:20px;
+
+  border-top:1px solid var(--line-dark);
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  color:rgba(255,255,255,.55);
+
+  font-size:12px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media(max-width:900px){
+
+  .hero-ticket{
+    grid-template-columns:1fr;
+  }
+
+  .hero-stamp{
+    min-height:150px;
+
+    border-left:0;
+
+    border-top:1px dashed var(--line-dark);
+  }
+
+  .trip-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .filters{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .filter-clear{
+    width:100%;
+  }
+
+  .trust-grid{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+}
+
+
+@media(max-width:680px){
+
+  .wrap{
+    width:min(
+      calc(100% - 28px),
+      var(--maxw)
+    );
+  }
+
+  .header-inner{
+    min-height:68px;
+  }
+
+  .brand-text strong{
+    font-size:17px;
+  }
+
+  .header-wa{
+    padding:0 13px;
+    font-size:12px;
+  }
+
+  .hero{
+    padding:35px 0 45px;
+  }
+
+  .hero-copy{
+    padding:35px 25px;
+  }
+
+  .hero-copy h1{
+    font-size:48px;
+  }
+
+  .hero-copy p{
+    font-size:16px;
+  }
+
+  .trip-grid{
+    grid-template-columns:1fr;
+  }
+
+  .filters{
+    grid-template-columns:1fr;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+  }
+
+
+  /* ----------------------------------------------------------
+     CARRUSEL MOBILE
+     ---------------------------------------------------------- */
+
+  .flyers{
+    padding:55px 0;
+  }
+
+  .flyer-carousel{
+    gap:7px;
+  }
+
+  .flyer-btn{
+    width:36px;
+    height:36px;
+
+    font-size:20px;
+  }
+
+  .flyer-slide img{
+    max-height:520px;
+  }
+
+  .flyer-overlay{
+    padding:30px 12px 12px;
+  }
+
+  .flyer-overlay .btn{
+    width:100%;
+  }
+
+}
