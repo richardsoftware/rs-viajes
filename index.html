@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RS Viajes & Experiencias · Tu próximo viaje empieza acá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --navy: #0B1F3A;
+  --navy-deep: #071526;
+  --navy-soft: #14304F;
+  --gold: #C9A227;
+  --gold-light: #E7C45C;
+  --paper: #FBF8F1;
+  --paper-dim: #F2ECDE;
+  --ink: #1B2430;
+  --ink-soft: #55606E;
+  --line: #D9CFB8;
+  --line-dark: rgba(255,255,255,.22);
+  --white: #ffffff;
+  --wa: #22A559;
+  --radius: 4px;
+  --maxw: 1180px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3{
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  margin: 0;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+p{ margin:0; }
+a{ color: inherit; }
+button{ font-family: inherit; cursor: pointer; }
+img{ max-width:100%; display:block; }
+
+.wrap{
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position: sticky; top:0; z-index: 50;
+  background: rgba(251,248,241,.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height: 76px;
+}
+.brand{
+  display:flex; align-items:center; gap:12px;
+  text-decoration:none;
+}
+.brand-mark{
+  width:40px; height:40px; border-radius:50%;
+  background: var(--navy);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--gold-light);
+  font-family:'Fraunces', serif;
+  font-weight:700; font-size:16px;
+  flex-shrink:0;
+}
+.brand-name{
+  font-family:'Fraunces', serif;
+  font-weight:600; font-size:19px; color:var(--navy);
+  line-height:1.05;
+}
+.brand-name small{
+  display:block;
+  font-family:'Work Sans', sans-serif;
+  font-weight:500; font-size:11px; letter-spacing:.06em;
+  color: var(--ink-soft); margin-top:2px;
+}
+.btn{
+  display:inline-flex; align-items:center; gap:9px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border:none;
+  font-weight:600; font-size:15px;
+  text-decoration:none;
+  transition: transform .15s ease, box-shadow .15s ease;
+  white-space:nowrap;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn-wa{
+  background: var(--wa); color: #fff;
+  box-shadow: 0 6px 16px rgba(34,165,89,.28);
+}
+.btn-wa:hover{ box-shadow: 0 8px 20px rgba(34,165,89,.38); }
+.btn-gold{
+  background: var(--gold); color: var(--navy-deep);
+  box-shadow: 0 6px 16px rgba(201,162,39,.32);
+}
+.btn-gold:hover{ box-shadow: 0 8px 20px rgba(201,162,39,.42); }
+.btn-ghost-dark{
+  background: transparent; color: var(--paper);
+  border: 1px solid var(--line-dark);
+}
+.btn-ghost-dark:hover{ background: rgba(255,255,255,.06); }
+.btn svg{ width:17px; height:17px; flex-shrink:0; }
+.header-cta{ display:flex; }
+.header-cta .btn{ padding:11px 20px; font-size:14px; }
+
+/* ============================================================
+   HERO — BOARDING PASS
+   ============================================================ */
+.hero{
+  padding: 64px 0 84px;
+  background:
+    radial-gradient(1100px 480px at 18% -10%, rgba(201,162,39,.10), transparent 60%),
+    var(--paper);
+}
+.hero-eyebrow{
+  display:flex; align-items:center; gap:10px;
+  font-size:13px; letter-spacing:.03em; color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+.hero-eyebrow .dot{
+  width:7px; height:7px; border-radius:50%; background: var(--wa);
+  box-shadow: 0 0 0 3px rgba(34,165,89,.18);
+}
+
+.pass{
+  position:relative;
+  display:grid;
+  grid-template-columns: 1fr 240px;
+  background: var(--navy);
+  border-radius: 22px;
+  overflow: visible;
+  box-shadow: 0 30px 60px -25px rgba(11,31,58,.55);
+  opacity: 0;
+  transform: translateY(18px);
+  animation: passIn .7s cubic-bezier(.2,.7,.2,1) .1s forwards;
+}
+@keyframes passIn{ to{ opacity:1; transform: translateY(0); } }
+
+.pass-main{
+  padding: 46px 48px;
+  position:relative;
+}
+.pass-agent{
+  display:flex; align-items:center; gap:16px;
+  margin-bottom: 30px;
+}
+.avatar{
+  width:58px; height:58px; border-radius:50%;
+  background: linear-gradient(155deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces', serif; font-weight:700; font-size:21px;
+  flex-shrink:0;
+  border: 2px solid rgba(255,255,255,.18);
+}
+.pass-agent-info .role{
+  display:inline-block;
+  font-size:12px; font-weight:600; letter-spacing:.02em;
+  color: var(--navy-deep);
+  background: var(--gold-light);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom:6px;
+}
+.pass-agent-info .name{
+  color: var(--paper);
+  font-size: 16px; font-weight:600;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.pass-headline{
+  color: var(--paper);
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.12;
+  max-width: 15ch;
+  margin-bottom: 18px;
+}
+.pass-headline .accent{
+  position:relative;
+  display:inline-block;
+  color: var(--gold-light);
+}
+.pass-headline .accent svg{
+  position:absolute; left:0; bottom:-9px; width:100%; height:12px;
+}
+
+.pass-sub{
+  color: rgba(251,248,241,.72);
+  font-size: 16px; line-height:1.6;
+  max-width: 46ch;
+  margin-bottom: 30px;
+}
+.pass-actions{ display:flex; flex-wrap:wrap; gap:14px; }
+
+.pass-stub{
+  border-left: 2px dashed rgba(251,248,241,.28);
+  padding: 40px 26px;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content: space-between;
+  position:relative;
+  color: var(--paper);
+}
+.notch{
+  position:absolute; left:-13px; width:26px; height:26px; border-radius:50%;
+  background: var(--paper);
+}
+.notch.top{ top:-13px; }
+.notch.bottom{ bottom:-13px; }
+
+.stub-route{
+  text-align:center;
+}
+.stub-route .codes{
+  font-family:'Fraunces', serif; font-size: 26px; font-weight:600;
+  letter-spacing: .04em;
+  display:flex; align-items:center; gap:10px; justify-content:center;
+  color: var(--gold-light);
+}
+.stub-route .codes .plane{ width:16px; height:16px; opacity:.85; }
+.stub-route .caption{
+  font-size:11px; letter-spacing:.08em; color: rgba(251,248,241,.55);
+  margin-top:8px;
+}
+
+.stub-barcode{
+  width:100%; height:54px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(251,248,241,.75) 0px, rgba(251,248,241,.75) 2px,
+    transparent 2px, transparent 5px,
+    rgba(251,248,241,.75) 5px, rgba(251,248,241,.75) 6px,
+    transparent 6px, transparent 10px,
+    rgba(251,248,241,.75) 10px, rgba(251,248,241,.75) 13px,
+    transparent 13px, transparent 16px
+  );
+  opacity: .55;
+}
+
+.stub-id{
+  font-size: 11px; letter-spacing:.08em; color: rgba(251,248,241,.5);
+  text-align:center;
+}
+
+.hero-stats{
+  display:flex; gap:44px;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.hero-stat b{
+  font-family:'Fraunces', serif; font-size: 26px; color: var(--navy);
+  display:block;
+}
+.hero-stat span{
+  font-size: 13px; color: var(--ink-soft);
+}
+
+/* ============================================================
+   CATALOG
+   ============================================================ */
+.catalog{
+  background: var(--paper-dim);
+  padding: 80px 0 90px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.section-head{
+  text-align:center;
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+.section-head h2{
+  font-size: clamp(28px, 3.4vw, 38px);
+  margin-bottom: 12px;
+}
+.section-head p{
+  color: var(--ink-soft); font-size:16px; line-height:1.6;
+}
+
+.filters{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  display:grid;
+  grid-template-columns: 1.6fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 34px;
+  box-shadow: 0 12px 30px -20px rgba(27,36,48,.25);
+}
+.field{
+  display:flex; flex-direction:column; gap:6px;
+}
+.field label{
+  font-size:11px; font-weight:600; letter-spacing:.04em; color: var(--ink-soft);
+}
+.field input, .field select{
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-family: inherit; font-size:14.5px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.field input:focus, .field select:focus{
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+.filters .clear{
+  align-self:end;
+  background:none; border:none;
+  color: var(--navy); font-weight:600; font-size:14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 11px 6px;
+}
+
+.results-count{
+  font-size: 14px; color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+.results-count strong{ color: var(--navy); }
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.ticket{
+  background: var(--white);
+  border-radius: 18px;
+  overflow:hidden;
+  box-shadow: 0 16px 32px -22px rgba(27,36,48,.35);
+  display:flex; flex-direction:column;
+  border: 1px solid var(--line);
+}
+.ticket-media{
+  position:relative;
+  height: 168px;
+  background: linear-gradient(135deg, var(--m1,#14304F), var(--m2,#0B1F3A));
+}
+.ticket-media::after{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.10) 0 2px, transparent 2px 26px);
+}
+.ticket-badges{
+  position:absolute; top:12px; left:12px;
+  display:flex; gap:6px;
+}
+.badge{
+  font-size:11px; font-weight:600; letter-spacing:.02em;
+  background: rgba(11,31,58,.72);
+  color: var(--paper);
+  padding: 5px 10px; border-radius: 999px;
+  display:flex; align-items:center; gap:5px;
+}
+.badge svg{ width:12px; height:12px; }
+.ticket-dest{
+  position:absolute; bottom:12px; left:16px; right:16px;
+  color: var(--paper);
+  font-family:'Fraunces', serif; font-size: 21px; font-weight:600;
+  text-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+
+.ticket-body{
+  padding: 18px 18px 20px;
+  border-top: 2px dashed var(--line);
+  position:relative;
+  flex:1;
+  display:flex; flex-direction:column;
+}
+.tk-notch{
+  position:absolute; top:-10px; width:20px; height:20px; border-radius:50%;
+  background: var(--paper-dim);
+}
+.tk-notch.l{ left:-10px; }
+.tk-notch.r{ right:-10px; }
+
+.ticket-meta{
+  font-size: 13px; color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.ticket-title{
+  font-size: 15px; font-weight:600; color: var(--ink);
+  margin-bottom: 8px;
+  line-height:1.35;
+}
+.ticket-includes{
+  font-size: 12.5px; color: var(--ink-soft); line-height:1.5;
+  margin-bottom: 14px;
+}
+.ticket-foot{
+  margin-top:auto;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap: 10px;
+}
+.price .amount{
+  font-family:'Fraunces', serif; font-size: 21px; color: var(--navy); font-weight:600;
+}
+.price .per{ font-size:11px; color: var(--ink-soft); display:block; }
+.date-pill{
+  font-size:12px; color: var(--navy-soft);
+  background: var(--paper-dim);
+  border:1px solid var(--line);
+  padding: 5px 10px; border-radius: 999px;
+  white-space:nowrap;
+}
+.ticket-cta{
+  margin-top:14px;
+  width:100%;
+  justify-content:center;
+  padding: 12px;
+  font-size:14px;
+}
+
+.empty-state{
+  text-align:center;
+  padding: 70px 20px;
+  color: var(--ink-soft);
+  display:none;
+}
+.empty-state h3{ font-size:22px; margin-bottom:8px; }
+
+.pager{
+  display:flex; align-items:center; justify-content:center;
+  gap: 18px;
+  margin-top: 44px;
+}
+.pager button{
+  width:40px; height:40px; border-radius:50%;
+  border: 1px solid var(--line);
+  background: var(--white);
+  display:flex; align-items:center; justify-content:center;
+  transition: background .15s ease, border-color .15s ease;
+}
+.pager button:hover:not(:disabled){ border-color: var(--gold); background: var(--paper-dim); }
+.pager button:disabled{ opacity:.35; cursor:default; }
+.pager svg{ width:17px; height:17px; }
+.pager-dots{ display:flex; gap:7px; }
+.pager-dots span{
+  width:7px; height:7px; border-radius:50%; background: var(--line);
+}
+.pager-dots span.active{ background: var(--gold); }
+
+/* ============================================================
+   TRUST STRIP
+   ============================================================ */
+.trust{
+  padding: 56px 0;
+}
+.trust .wrap{
+  display:flex; flex-wrap:wrap; gap:36px; justify-content:space-between;
+}
+.trust-item{
+  flex: 1 1 220px;
+  display:flex; gap:14px; align-items:flex-start;
+}
+.trust-item .ic{
+  width:38px; height:38px; border-radius:10px;
+  background: var(--navy);
+  color: var(--gold-light);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.trust-item .ic svg{ width:19px; height:19px; }
+.trust-item h4{
+  font-family:'Work Sans', sans-serif;
+  font-size:15px; font-weight:600; color: var(--ink); margin-bottom:4px;
+}
+.trust-item p{ font-size: 13.5px; color: var(--ink-soft); line-height:1.5; }
+
+/* ============================================================
+   CTA / FOOTER
+   ============================================================ */
+.closer{
+  background: var(--navy);
+  padding: 80px 0 0;
+  color: var(--paper);
+  position: relative;
+  overflow:hidden;
+}
+.closer::before{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(700px 340px at 85% 0%, rgba(201,162,39,.14), transparent 65%);
+  pointer-events:none;
+}
+.closer-inner{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  align-items:center;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--line-dark);
+  position:relative;
+}
+.closer h2{
+  color: var(--paper);
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height:1.16;
+  max-width: 13ch;
+  margin-bottom:16px;
+}
+.closer h2 .accent{ color: var(--gold-light); }
+.closer p{
+  color: rgba(251,248,241,.68);
+  font-size:16px; line-height:1.6;
+  max-width: 44ch;
+}
+.contact-cards{ display:flex; flex-direction:column; gap:14px; }
+.contact-card{
+  display:flex; align-items:center; gap:14px;
+  background: rgba(251,248,241,.06);
+  border: 1px solid var(--line-dark);
+  border-radius: 14px;
+  padding: 16px 18px;
+  text-decoration:none;
+  transition: background .15s ease, transform .15s ease;
+}
+.contact-card:hover{ background: rgba(251,248,241,.11); transform: translateY(-1px); }
+.contact-card .ic{
+  width:42px; height:42px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.contact-card.human .ic{ background: var(--wa); }
+.contact-card.ai .ic{ background: var(--gold); }
+.contact-card .ic svg{ width:20px; height:20px; color:#fff; }
+.contact-card.ai .ic svg{ color: var(--navy-deep); }
+.contact-card .txt .eyebrow{
+  font-size:11px; letter-spacing:.06em; color: rgba(251,248,241,.55);
+  margin-bottom:2px;
+}
+.contact-card .txt .main{ font-size:15.5px; font-weight:600; color: var(--paper); }
+.contact-card .txt .sub{ font-size:13px; color: rgba(251,248,241,.6); margin-top:1px; }
+
+.site-footer{
+  padding: 26px 0 30px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:10px;
+  font-size:13px;
+  color: rgba(251,248,241,.5);
+}
+.site-footer a{ color: rgba(251,248,241,.7); text-decoration:none; }
+.site-footer a:hover{ text-decoration:underline; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px){
+  .grid{ grid-template-columns: repeat(2, 1fr); }
+  .pass{ grid-template-columns: 1fr; }
+  .pass-stub{
+    border-left:none; border-top: 2px dashed rgba(251,248,241,.28);
+    flex-direction:row; padding: 22px 30px; gap:24px;
+  }
+  .notch{ display:none; }
+  .stub-barcode{ height:38px; width:120px; }
+  .closer-inner{ grid-template-columns: 1fr; }
+}
+@media (max-width: 680px){
+  .grid{ grid-template-columns: 1fr; }
+  .filters{ grid-template-columns: 1fr 1fr; }
+  .filters .clear{ grid-column: span 2; justify-self:start; }
+  .header-cta .btn span{ display:none; }
+  .pass-main{ padding: 34px 24px; }
+  .trust .wrap{ flex-direction:column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <span class="brand-mark">RS</span>
+      <span class="brand-name">RS Viajes<small>&amp; Experiencias</small></span>
+    </a>
+    <div class="header-cta">
+      <a class="btn btn-wa" href="https://wa.me/5491165756000?text=Hola%2C%20quiero%20consultar%20por%20un%20viaje" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.11 1-2.4.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.33 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
+        <span>Escribime</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+
+    <div class="pass">
+      <div class="pass-main">
+        <div class="pass-agent">
+          <div class="avatar">R</div>
+          <div class="pass-agent-info">
+            <span class="role">Agente de viajes · RS Viajes &amp; Experiencias</span>
+            <div class="name">Richard · te acompaño en cada etapa del viaje</div>
+          </div>
+        </div>
+
+        <h1 class="pass-headline">
+          Hacé realidad tu<br>próximo <span class="accent">viaje
+            <svg viewBox="0 0 140 12" preserveAspectRatio="none"><path d="M2 9 C 30 2, 60 11, 90 5 S 130 2, 138 7" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+          </span>
+        </h1>
+
+        <p class="pass-sub">
+          Te asesoro de punta a punta —desde elegir el destino hasta cerrar la reserva— y te consigo las mejores salidas grupales e individuales disponibles hoy.
+        </p>
+
+        <div class="pass-actions">
+          <a class="btn btn-gold" href="#catalogo">
+            Ver catálogo de viajes
+          </a>
+          <a class="btn btn-ghost-dark" href="https://wa.me/5491165756000?text=Hola%20Richard%2C%20quiero%20armar%20un%20viaje" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.11 1-2.4.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.33 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
+            Hablar con Richard
+          </a>
+        </div>
+      </div>
+
+      <div class="pass-stub">
+        <span class="notch top"></span>
+        <div class="stub-route">
+          <div class="codes">
+            <span>VOS</span>
+            <svg class="plane" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5Z"/></svg>
+            <span>???</span>
+          </div>
+          <div class="caption">DESTINO A DEFINIR</div>
+        </div>
+        <div class="stub-barcode"></div>
+        <div class="stub-id">RS-EXP · PRE-RESERVA ONLINE</div>
+        <span class="notch bottom"></span>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><b id="stat-count">–</b><span>salidas disponibles</span></div>
+      <div class="hero-stat"><b>24/7</b><span>asesoramiento por WhatsApp</span></div>
+      <div class="hero-stat"><b>100%</b><span>pre-reserva online</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CATALOG ================= -->
+<section class="catalog" id="catalogo">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Catálogo de viajes</h2>
+      <p>Todas las salidas disponibles. Filtrá por destino, transporte o fecha y pre-reservá en un clic.</p>
+    </div>
+
+    <div class="filters">
+      <div class="field">
+        <label for="f-search">Buscar</label>
+        <input id="f-search" type="text" placeholder="Destino, hotel...">
+      </div>
+      <div class="field">
+        <label for="f-dest">Destino</label>
+        <select id="f-dest">
+          <option value="">Todos los destinos</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-transp">Transporte</label>
+        <select id="f-transp">
+          <option value="">Todo transporte</option>
+          <option value="bus">Bus</option>
+          <option value="aereo">Aéreo</option>
+        </select>
+      </div>
+      <button class="clear" id="f-clear">Limpiar filtros</button>
+    </div>
+
+    <p class="results-count"><strong id="count">0</strong> viajes disponibles</p>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="empty-state" id="empty">
+      <h3>No encontramos viajes con esos filtros</h3>
+      <p>Probá con otro destino o escribime directamente y te busco opciones a medida.</p>
+    </div>
+
+    <div class="pager" id="pager"></div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-item">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <div><h4>Pre-reserva sin vueltas</h4><p>Confirmás tu lugar online y coordinamos el pago por WhatsApp.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div><h4>Respuesta al instante</h4><p>Mi asistente con IA responde consultas frecuentes las 24 horas.</p></div>
+    </div>
+    <div class="trust-item">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.35-9.5-9C.5 7.5 3 3 7 3c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4.5 4.5 9-2.5 4.65-9.5 9-9.5 9Z"/></svg></div>
+      <div><h4>Trato personal</h4><p>Te asesoro yo mismo en cada paso, no un call center.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSER / FOOTER ================= -->
+<footer class="closer">
+  <div class="wrap">
+    <div class="closer-inner">
+      <div>
+        <h2>Escribime para conocer más destinos y los mejores <span class="accent">precios</span></h2>
+        <p>Te asesoro yo. Y si no me encontrás, mi asistente con IA conoce todos mis viajes y responde al instante, las 24 horas.</p>
+      </div>
+      <div class="contact-cards">
+        <a class="contact-card human" href="https://wa.me/5491165756000?text=Hola%20Richard%2C%20quiero%20consultar%20por%20un%20viaje" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.37-.5.07-1.12.1-1.81-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.13-4.9-4.32-.14-.19-1.17-1.56-1.17-2.98 0-1.41.74-2.11 1-2.4.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.65.5.24.58.81 2 .88 2.15.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.13.57.17.29.75 1.24 1.61 2.01 1.11.99 2.04 1.3 2.33 1.44.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.64.77 1.92.91.29.14.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg></span>
+          <span class="txt">
+            <span class="eyebrow">WhatsApp personal</span>
+            <span class="main">Escribime a mí</span>
+            <span class="sub">Soy Richard, te asesoro personalmente.</span>
+          </span>
+        </a>
+        <a class="contact-card ai" href="https://wa.me/5491165756000?text=Hola%2C%20quiero%20info%20sobre%20los%20viajes%20disponibles" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4m-3 0h6"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg></span>
+          <span class="txt">
+            <span class="eyebrow">WhatsApp con IA · 24/7</span>
+            <span class="main">Hablá con mi asistente</span>
+            <span class="sub">Conoce todos los viajes y responde al instante.</span>
+          </span>
+        </a>
+      </div>
+    </div>
+    <div class="site-footer">
+      <span>© <span id="year"></span> RS Viajes &amp; Experiencias · Richard, agente de viajes</span>
+      <a href="https://instagram.com/rsviajesyexperiencias" target="_blank" rel="noopener">@rsviajesyexperiencias</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA — reemplazá esto por tus salidas reales
+   ============================================================ */
+const TRIPS = [
+  { destino:"Puerto Madryn", titulo:"Puerto Madryn Aéreo · Península Valdés", hotel:"Hotel Rayentray ★★★★", pension:"Media pensión", transporte:"aereo", noches:4, precio:899990, priceNote:"+ $99.990 impuestos", incluye:"Aéreo desde Bs. As. con JetSmart · Bolso de mano + valija 23 kg · Asistencia médica y coordinación permanente", fecha:"2026-10-24", colors:["#0e4a6e","#0b1f3a"] },
+  { destino:"Bariloche", titulo:"Bariloche Aéreo", hotel:"Hotel Cambria", pension:"Media pensión", transporte:"aereo", noches:4, precio:599990, priceNote:"+ $99.990 imp. aéreo", incluye:"Aéreo desde Bs. As. con JetSmart · Traslados in/out · Bolso de mano + valija a despachar 23 kg", fecha:"2026-10-15", colors:["#5e1f3a","#0b1f3a"] },
+  { destino:"Cataratas del Iguazú", titulo:"Cataratas Aéreo · Lado argentino y brasileño", hotel:"Hotel Grand Crucero ★★★★", pension:"Media pensión", transporte:"aereo", noches:3, precio:599990, priceNote:"+ $99.990 imp. aéreo", incluye:"Aéreo desde Bs. As. con JetSmart · Excursión a ambos lados de las Cataratas · Pasajeros a compartir garantizado", fecha:"2026-10-27", colors:["#0f3d2a","#0b1f3a"] },
+  { destino:"Noroeste Argentino", titulo:"Noroeste Arg. Full · Quebrada de Humahuaca", hotel:"Hotel Nuevo Premier", pension:"Media pensión", transporte:"bus", noches:5, precio:529990, priceNote:"Butaca cama $40.000", incluye:"Recorrido Salta, Jujuy, Cafayate y Tucumán · Pasajeros a compartir garantizado", fecha:"2026-10-26", colors:["#5a2a12","#0b1f3a"] },
+  { destino:"Fiambalá y Catamarca", titulo:"Termas de Fiambalá, Catamarca y Ruta del Adobe", hotel:"Hotel Del Centro (Aimogasta)", pension:"Media pensión", transporte:"bus", noches:3, precio:449990, priceNote:"Butaca cama $50.000", incluye:"Recorrido Aimogasta · Fiambalá · Catamarca · Pasajeros a compartir garantizado", fecha:"2026-10-29", colors:["#8a4a12","#0b1f3a"] },
+  { destino:"Rosario y San Nicolás", titulo:"Escapada a la Felicidad · Rosario + San Nicolás", hotel:"Nuevo Centro Apart & Suites (Marcos Juárez)", pension:"Media pensión", transporte:"bus", noches:1, precio:129990, priceNote:"Butaca cama $20.000", incluye:"Salida desde Buenos Aires · Visita a Rosario y a la Virgen de San Nicolás · Fiesta de Felicidad incluida", fecha:"2026-09-06", colors:["#5e1f4a","#0b1f3a"] },
+];
+
+const money = n => n.toLocaleString("es-AR");
+const dateLabel = iso => {
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("es-AR", { day:"2-digit", month:"short", year:"numeric" }).replace(".", "");
+};
+
+const WA_NUMBER = "5491165756000"; // reemplazar por el número real, formato 549 + código de área + línea
+
+const gridEl = document.getElementById("grid");
+const emptyEl = document.getElementById("empty");
+const countEl = document.getElementById("count");
+const pagerEl = document.getElementById("pager");
+const destSelect = document.getElementById("f-dest");
+const transpSelect = document.getElementById("f-transp");
+const searchInput = document.getElementById("f-search");
+const clearBtn = document.getElementById("f-clear");
+
+const PAGE_SIZE = 6;
+let currentPage = 1;
+
+// Poblar el select de destinos a partir de los datos
+[...new Set(TRIPS.map(t => t.destino))].sort().forEach(d => {
+  const opt = document.createElement("option");
+  opt.value = d; opt.textContent = d;
+  destSelect.appendChild(opt);
+});
+
+function badgeIcon(transporte){
+  if(transporte === "aereo"){
+    return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2.5 1.5V22l4-1 4 1v-1.5L13 19v-5.5l8 2.5Z"/></svg>';
+  }
+  return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 16c0 .8.4 1.5 1 2v1a1 1 0 0 0 2 0v-1h10v1a1 1 0 0 0 2 0v-1c.6-.5 1-1.2 1-2V6c0-3-3-3-8-3s-8 0-8 3v10Zm3 1a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm10 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3ZM6 11V6h12v5H6Z"/></svg>';
+}
+
+function tripCard(t){
+  const el = document.createElement("article");
+  el.className = "ticket";
+  const waMsg = encodeURIComponent(`Hola Richard, quiero pre-reservar: ${t.titulo} (salida ${dateLabel(t.fecha)})`);
+  el.innerHTML = `
+    <div class="ticket-media" style="--m1:${t.colors[0]};--m2:${t.colors[1]}">
+      <div class="ticket-badges">
+        <span class="badge">${badgeIcon(t.transporte)} ${t.transporte === "aereo" ? "Aéreo" : "Bus"}</span>
+        <span class="badge">${t.noches} noches</span>
+      </div>
+      <div class="ticket-dest">${t.destino}</div>
+    </div>
+    <div class="ticket-body">
+      <span class="tk-notch l"></span><span class="tk-notch r"></span>
+      <p class="ticket-meta">${t.hotel} · ${t.pension}</p>
+      <h3 class="ticket-title">${t.titulo}</h3>
+      ${t.incluye ? `<p class="ticket-includes">${t.incluye}</p>` : ""}
+      <div class="ticket-foot">
+        <div class="price">
+          <span class="amount">$${money(t.precio)}</span>
+          <span class="per">por persona${t.priceNote ? " · " + t.priceNote : ""}</span>
+        </div>
+        <span class="date-pill">${dateLabel(t.fecha)}</span>
+      </div>
+      <a class="btn btn-wa ticket-cta" href="https://wa.me/${WA_NUMBER}?text=${waMsg}" target="_blank" rel="noopener">Pre reservar</a>
+    </div>
+  `;
+  return el;
+}
+
+function getFiltered(){
+  const q = searchInput.value.trim().toLowerCase();
+  const dest = destSelect.value;
+  const transp = transpSelect.value;
+  return TRIPS.filter(t => {
+    if(dest && t.destino !== dest) return false;
+    if(transp && t.transporte !== transp) return false;
+    if(q && !(`${t.destino} ${t.titulo} ${t.hotel}`.toLowerCase().includes(q))) return false;
+    return true;
+  }).sort((a,b) => new Date(a.fecha) - new Date(b.fecha));
+}
+
+function renderPager(totalPages){
+  pagerEl.innerHTML = "";
+  if(totalPages <= 1) return;
+
+  const prev = document.createElement("button");
+  prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+  prev.disabled = currentPage === 1;
+  prev.setAttribute("aria-label", "Página anterior");
+  prev.onclick = () => { currentPage--; render(); };
+
+  const dots = document.createElement("div");
+  dots.className = "pager-dots";
+  for(let i=1; i<=totalPages; i++){
+    const s = document.createElement("span");
+    if(i === currentPage) s.classList.add("active");
+    dots.appendChild(s);
+  }
+
+  const next = document.createElement("button");
+  next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>';
+  next.disabled = currentPage === totalPages;
+  next.setAttribute("aria-label", "Página siguiente");
+  next.onclick = () => { currentPage++; render(); };
+
+  pagerEl.append(prev, dots, next);
+}
+
+function render(){
+  const filtered = getFiltered();
+  countEl.textContent = filtered.length;
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  currentPage = Math.min(currentPage, totalPages);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+  gridEl.innerHTML = "";
+  if(pageItems.length === 0){
+    gridEl.style.display = "none";
+    emptyEl.style.display = "block";
+  } else {
+    gridEl.style.display = "grid";
+    emptyEl.style.display = "none";
+    pageItems.forEach(t => gridEl.appendChild(tripCard(t)));
+  }
+  renderPager(totalPages);
+}
+
+searchInput.addEventListener("input", () => { currentPage = 1; render(); });
+destSelect.addEventListener("change", () => { currentPage = 1; render(); });
+transpSelect.addEventListener("change", () => { currentPage = 1; render(); });
+clearBtn.addEventListener("click", () => {
+  searchInput.value = ""; destSelect.value = ""; transpSelect.value = "";
+  currentPage = 1; render();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("stat-count").textContent = TRIPS.length;
+
+render();
+</script>
+</body>
+</html>
