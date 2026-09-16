@@ -687,17 +687,17 @@ if(statCountEl){
 const FLYERS = [
 
   {
-    src:"img/merlo.png",
+    src:"img/08O_VALLE VCP PROMO copia.jpg",
     alt:"Promoción de viaje a Merlo",
     message:
-      "Hola Richard, quiero consultar por el viaje a Merlo."
+      "Hola Richard, quiero consultar por el viaje a Oktoberfest."
   },
 
   {
-    src:"img/villa-carlos-paz.png",
+    src:"img/peninsula.jpeg",
     alt:"Oferta de Villa Carlos Paz",
     message:
-      "Hola Richard, quiero consultar por Villa Carlos Paz."
+      "Hola Richard, quiero consultar por Peninsula Valdez."
   },
 
   {
@@ -715,10 +715,31 @@ const FLYERS = [
   },
 
   {
-    src:"img/ofertas-blanco-negro.png",
+    src:"img/sanber.jpeg",
     alt:"Ofertas de viajes",
     message:
-      "Hola Richard, quiero consultar por las ofertas de viajes."
+      "Hola Richard, quiero consultar por San Bernardo."
+  },
+
+  {
+    src:"img/reservas.jpeg",
+    alt:"Resrvas de Hoteles",
+    message:
+      "Hola Richard, quiero consultar por Hoteles."
+  },
+
+  {
+    src:"img/tulipanes.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por Bariloche + Tulipanes."
+  },
+
+  {
+    src:"img/caviahue.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por Caviahue."
   }
 
 ];
