@@ -751,6 +751,27 @@ const FLYERS = [
       "Hola Richard, quiero consultar por FERIADO DE OCTUBRE."
   },
 
+      {
+    src:"img/TO/MDQ.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por MAR DEL PLATA."
+  },
+
+      {
+    src:"img/TO/MADRYN.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por MADRYN."
+  },
+
+      {
+    src:"img/TO/MERLO.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por MERLO."
+  },
+
   {
     src:"img/RSAMBA/LACOSTA.jpeg",
     alt:"Ofertas de viajes",
