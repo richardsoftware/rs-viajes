@@ -1,5 +1,7 @@
 const TRIPS = [
-
+/* ============================================================
+   DESTINOS
+   ============================================================ */
   {
     destino:"Puerto Madryn",
     titulo:"Puerto Madryn Aéreo · Península Valdés",
@@ -701,14 +703,14 @@ const FLYERS = [
   },
 
   {
-    src:"img/octubre-multidestino.png",
+    src:"img/AMCABI/octubre-multidestino.png",
     alt:"Promociones de viajes de octubre",
     message:
       "Hola Richard, quiero consultar por las promociones de octubre."
   },
 
   {
-    src:"img/viajes-inolvidables.png",
+    src:"img/RSNORTE/viajes-inolvidables.png",
     alt:"Viajes inolvidables",
     message:
       "Hola Richard, quiero consultar por los viajes disponibles."
@@ -729,14 +731,28 @@ const FLYERS = [
   },
 
   {
-    src:"img/tulipanes.jpeg",
+    src:"img/ORIGEN/tulipanes.jpeg",
     alt:"Ofertas de viajes",
     message:
       "Hola Richard, quiero consultar por Bariloche + Tulipanes."
   },
 
+    {
+    src:"img/ORIGEN/HOSTAL.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por San Bernardo."
+  },
+
+    {
+    src:"img/NOCHE/FERIADO_OCTUBRE.jpeg",
+    alt:"Ofertas de viajes",
+    message:
+      "Hola Richard, quiero consultar por FERIADO DE OCTUBRE."
+  },
+
   {
-    src:"img/caviahue.jpeg",
+    src:"img/RSAMBA/LACOSTA.jpeg",
     alt:"Ofertas de viajes",
     message:
       "Hola Richard, quiero consultar por Caviahue."
