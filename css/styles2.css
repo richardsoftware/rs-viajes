@@ -538,9 +538,8 @@ button{
 
   grid-template-columns:
     minmax(200px,1fr)
-    minmax(160px,.7fr)
-    minmax(160px,.7fr)
-    minmax(160px,.7fr)
+    minmax(180px,.7fr)
+    minmax(180px,.7fr)
     auto;
 
   gap:14px;
@@ -638,10 +637,6 @@ button{
 }
 
 .trip-top{
-  position:relative;
-
-  overflow:hidden;
-
   min-height:130px;
 
   padding:22px;
@@ -658,40 +653,6 @@ button{
       var(--trip-a),
       var(--trip-b)
     );
-}
-
-.trip-photo{
-  position:absolute;
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  z-index:0;
-}
-
-.trip-top::after{
-  content:"";
-
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      0deg,
-      rgba(11,31,58,.88) 0%,
-      rgba(11,31,58,.35) 55%,
-      rgba(11,31,58,.15) 100%
-    );
-
-  z-index:1;
-}
-
-.trip-top > *{
-  position:relative;
-  z-index:2;
 }
 
 .trip-destination{
@@ -712,14 +673,6 @@ button{
   font-size:25px;
 
   line-height:1.1;
-}
-
-.trip-origin{
-  margin-top:8px;
-
-  font-size:12px;
-
-  opacity:.85;
 }
 
 .trip-body{
